@@ -21,6 +21,7 @@ class Procesador{
         let procesoTerminado = 0;
         let procesoFuera = 0;
         let procesoTotal = 0;
+        let ciclo = 0;
 
         for(let i = 0; i <= 300; i++){
             let procesos = this._procesoPreHecho();
@@ -30,33 +31,28 @@ class Procesador{
                 procesoTotal ++;
                 console.log(procesos);
             } 
-            if(this.items === null){
+            if(this.vacia() === true){
+                this.items.vida = procesoFuera;
                 procesoFuera++;
             } 
             if (this.items != null){
                 this.items.vida--;
             }
             if(this.items != null && this.items.vida === 0){
-                if(this.items != null){
-                    this.items = this.items;
-                    procesoTerminado++;
-                }
+                procesoTerminado++;
             }
-            let ciclo = 0;
-            let process = 0;
-    
-            while(this._items != null){
-                ciclo +- this._items.vida;
-                process ++;
-                this._items = this._items;
+
+            if(this.items != null){
+                this.items.vida = ciclo;
+                ciclo++;
             }
             
             
         }
         console.log("Total de procesos creados: " + procesoTotal);
         console.log("Procesos que fueron completados: "+ procesoTerminado);
-        //console.log("Numero de procesos en fila: " + process);
-        //console.log("Total de ciclos que faltan para terminar la fila" + ciclo);    
+        console.log("Numero de procesos en fila: " + this.tamaño());
+        console.log("Total de ciclos que faltan para terminar la fila: " + ciclo);    
         console.log("Ciclos en que la fila estuvo vacia: " + procesoFuera); 
 
       
